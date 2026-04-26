@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    float parcial1, parcial2, practico, examenFinal, notaFinal;
+    int faltas;
+    char continuar;
+    
+    // Constantes del problema
+    const int TOTAL_CLASES = 48;
+    const float LIMITE_FALTAS = TOTAL_CLASES * 0.20; // 9.6 faltas
+
+    do {
+        cout << "\n--- CALCULO DE NOTA FINAL ---" << endl;
+        
+        // Entrada de notas
+        cout << "Nota Parcial 1 (sobre 100): "; cin >> parcial1;
+        cout << "Nota Parcial 2 (sobre 100): "; cin >> parcial2;
+        cout << "Nota Examen Practico (sobre 100): "; cin >> practico;
+        cout << "Nota Examen Final (sobre 100): "; cin >> examenFinal;
+        cout << "Numero de faltas: "; cin >> faltas;
+
+        // Regla de las faltas: Si exceden el 20% (9.6), el final es 0
+        if (faltas > LIMITE_FALTAS) {
+            cout << "(!) Alumno excedio el limite de faltas. Examen final anulado (0)." << endl;
+            examenFinal = 0;
+        }
+
+        // Calculo ponderado
+        // Parciales (40% entre los dos, asumiendo 20% c/u), Practico (20%), Final (40%)
+        notaFinal = (parcial1 * 0.20) + (parcial2 * 0.20) + (practico * 0.20) + (examenFinal * 0.40);
+
+        // Resultados
+        cout << "-----------------------------------" << endl;
+        cout << "PROMEDIO FINAL: " << notaFinal << endl;
+
+        if (notaFinal >= 51) {
+            cout << "ESTADO: APROBADO" << endl;
+        } else {
+            cout << "ESTADO: REPROBADO" << endl;
+        }
+        cout << "-----------------------------------" << endl;
+
+        // Preguntar si desea continuar
+        cout << "¿Desea calcular la nota de otro alumno? (s/n): ";
+        cin >> continuar;
+
+    } while (continuar == 's' || continuar == 'S');
+
+    cout << "Programa finalizado. ¡Hasta luego!" << endl;
+
+    return 0;
+}

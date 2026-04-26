@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int dia, mes, anio;
+    string estacion;
+
+    cout << "Ingrese el dia: "; cin >> dia;
+    cout << "Ingrese el mes (1-12): "; cin >> mes;
+    cout << "Ingrese el anio: "; cin >> anio;
+
+    // Convertimos la fecha a un formato numerico facil de comparar: MMDD
+    // Ejemplo: 21 de Septiembre -> (9 * 100) + 21 = 921
+    int fechaRef = (mes * 100) + dia;
+
+    // Evaluamos segun los rangos de la imagen
+    // Primavera: 21 de Septiembre (921) al 20 de Diciembre (1220)
+    if (fechaRef >= 921 && fechaRef <= 1220) {
+        estacion = "Primavera";
+    }
+    // Verano: 21 de Diciembre (1221) al 20 de Marzo (320)
+    // Nota: Como el Verano cruza el fin de año, usamos OR (||)
+    else if (fechaRef >= 1221 || fechaRef <= 320) {
+        estacion = "Verano";
+    }
+    // Otoño: 21 de Marzo (321) al 20 de Junio (620)
+    else if (fechaRef >= 321 && fechaRef <= 620) {
+        estacion = "Otono";
+    }
+    // Invierno: 21 de Junio (621) al 20 de Septiembre (920)
+    else if (fechaRef >= 621 && fechaRef <= 920) {
+        estacion = "Invierno";
+    }
+
+    cout << "\nLa estacion para la fecha " << dia << "/" << mes << "/" << anio 
+         << " es: " << estacion << endl;
+
+    return 0;
+}

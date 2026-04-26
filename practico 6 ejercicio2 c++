@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>    // Librería para funciones matemáticas como sqrt() y pow()
+#include <iomanip>  // Para formatear la salida de los números
+
+using namespace std;
+
+int main() {
+    double a, b, c, x1, x2, discriminante;
+
+    cout << "--- Resolutor de Ecuaciones Cuadraticas ---" << endl;
+    cout << "Ingrese el valor de a: "; cin >> a;
+    cout << "Ingrese el valor de b: "; cin >> b;
+    cout << "Ingrese el valor de c: "; cin >> c;
+
+    // El coeficiente 'a' no puede ser 0 en una ecuación cuadrática
+    if (a == 0) {
+        cout << "Error: 'a' no puede ser cero en una ecuacion cuadratica." << endl;
+        return 0;
+    }
+
+    // Calculamos el discriminante (lo que va dentro de la raíz)
+    discriminante = pow(b, 2) - (4 * a * c);
+
+    cout << fixed << setprecision(2);
+
+    // Evaluamos si existen soluciones reales
+    if (discriminante > 0) {
+        // Dos soluciones reales y distintas
+        x1 = (-b + sqrt(discriminante)) / (2 * a);
+        x2 = (-b - sqrt(discriminante)) / (2 * a);
+        cout << "Las soluciones reales son:" << endl;
+        cout << "x1 = " << x1 << endl;
+        cout << "x2 = " << x2 << endl;
+    } 
+    else if (discriminante == 0) {
+        // Una única solución real (raíz doble)
+        x1 = -b / (2 * a);
+        cout << "Existe una única solución real:" << endl;
+        cout << "x1 = x2 = " << x1 << endl;
+    } 
+    else {
+        // Discriminante negativo implica soluciones imaginarias/complejas
+        cout << "La ecuacion no tiene soluciones reales (el resultado es complejo)." << endl;
+    }
+
+    return 0;
+}

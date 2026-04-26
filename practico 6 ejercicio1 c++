@@ -1,0 +1,40 @@
+#include <iostream>
+#include <iomanip> // Para manejar decimales en la salida
+
+using namespace std;
+
+int main() {
+    double P;
+    
+    // Entrada de datos
+    cout << "Ingrese el peso de la carta en gramos (P): ";
+    cin >> P;
+
+    // Configuración para mostrar 2 decimales en el costo
+    cout << fixed << setprecision(2);
+
+    // Lógica de decisión según la tabla
+    if (P > 0 && P < 50) {
+        cout << "El costo de envio es: Bs. 1.50" << endl;
+    } 
+    else if (P >= 50 && P <= 100) {
+        cout << "El costo de envio es: Bs. 4.00" << endl;
+    } 
+    else if (P > 100 && P <= 200) {
+        cout << "El costo de envio es: Bs. 6.00" << endl;
+    } 
+    else if (P > 200 && P <= 350) {
+        cout << "El costo de envio es: Bs. 10.50" << endl;
+    } 
+    else if (P > 350 && P <= 500) {
+        cout << "El costo de envio es: Bs. 15.00" << endl;
+    } 
+    else if (P > 500) {
+        cout << "NO PUEDE ENVIAR COMO CARTA" << endl;
+    } 
+    else {
+        cout << "Peso no valido." << endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,50 @@
+#include <iostream>
+#include <iomanip> // Para formatear los decimales
+
+using namespace std;
+
+int main() {
+    // Variables para las cantidades (enteros)
+    int cantH, cantHQ, cantP, cantS;
+    
+    // Precios constantes segun el menu
+    const double PRECIO_H = 3.0;
+    const double PRECIO_HQ = 5.0;
+    const double PRECIO_P = 2.0;
+    const double PRECIO_S = 2.5;
+
+    // Variables para totales parciales y total general
+    double subH, subHQ, subP, subS, totalGeneral;
+    int totalCantidades;
+
+    cout << "--- RESTAURANTE DE HAMBURGUESAS ---" << endl;
+    
+    // Entrada de datos
+    cout << "Cantidad de Hamburguesas: "; cin >> cantH;
+    cout << "Cantidad de Hamburguesas con queso: "; cin >> cantHQ;
+    cout << "Cantidad de Papas fritas: "; cin >> cantP;
+    cout << "Cantidad de Sodas: "; cin >> cantS;
+
+    // Cálculos de Totales Parciales
+    subH = cantH * PRECIO_H;
+    subHQ = cantHQ * PRECIO_HQ;
+    subP = cantP * PRECIO_P;
+    subS = cantS * PRECIO_S;
+
+    // Cálculos de Totales Generales
+    totalCantidades = cantH + cantHQ + cantP + cantS;
+    totalGeneral = subH + subHQ + subP + subS;
+
+    // Mostrar Resultados (Formato de tabla)
+    cout << fixed << setprecision(2);
+    cout << "\n---------------------------------------------------" << endl;
+    cout << "ITEM\t\t\tCANTIDAD\tTOTAL PARCIAL" << endl;
+    cout << "Hamburguesas\t\t" << cantH << "\t\tBs. " << subH << endl;
+    cout << "Hamburguesas c/queso\t" << cantHQ << "\t\tBs. " << subHQ << endl;
+    cout << "Papas fritas\t\t" << cantP << "\t\tBs. " << subP << endl;
+    cout << "Soda\t\t\t" << cantS << "\t\tBs. " << subS << endl;
+    cout << "---------------------------------------------------" << endl;
+    cout << "T O T A L\t\t" << totalCantidades << "\t\tBs. " << totalGeneral << endl;
+
+    return 0;
+}

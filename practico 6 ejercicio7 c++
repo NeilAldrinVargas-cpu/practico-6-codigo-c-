@@ -1,0 +1,42 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    // Coeficientes: a, b, c (ec 1) y d, e, f (ec 2)
+    double a, b, c, d, e, f;
+    double det, x, y;
+
+    cout << "--- Sistema de Ecuaciones 2x2 ---" << endl;
+    cout << "Ecuacion 1 (aX + bY = c)" << endl;
+    cout << "Ingrese a: "; cin >> a;
+    cout << "Ingrese b: "; cin >> b;
+    cout << "Ingrese c: "; cin >> c;
+
+    cout << "\nEcuacion 2 (dX + eY = f)" << endl;
+    cout << "Ingrese d: "; cin >> d;
+    cout << "Ingrese e: "; cin >> e;
+    cout << "Ingrese f: "; cin >> f;
+
+    // 1. Calcular el determinante principal (ae - bd)
+    det = (a * e) - (b * d);
+
+    // 2. Verificar si el sistema tiene solución
+    if (det != 0) {
+        // Aplicar fórmulas de Cramer
+        x = (c * e - b * f) / det;
+        y = (a * f - c * d) / det;
+
+        cout << fixed << setprecision(2);
+        cout << "\nResultados:" << endl;
+        cout << "X = " << x << endl;
+        cout << "Y = " << y << endl;
+    } 
+    else {
+        // Si el determinante es 0, las rectas son paralelas o iguales
+        cout << "\nEl sistema no tiene solucion unica (Determinante = 0)." << endl;
+    }
+
+    return 0;
+}

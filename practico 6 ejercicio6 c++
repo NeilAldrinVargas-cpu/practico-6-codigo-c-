@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>    // Para sqrt()
+#include <iomanip>  // Para decimales
+
+using namespace std;
+
+int main() {
+    // Declaración de variables
+    double a, b, c;
+    double discriminante, parteReal, parteImaginaria, x1, x2;
+
+    cout << "--- CALCULADORA DE ECUACION CUADRATICA (ax^2 + bx + c = 0) ---" << endl;
+    cout << "Ingrese el valor de a: "; cin >> a;
+    cout << "Ingrese el valor de b: "; cin >> b;
+    cout << "Ingrese el valor de c: "; cin >> c;
+
+    // Caso Especial: Si 'a' es cero, no es cuadrática, es lineal
+    if (a == 0) {
+        if (b != 0) {
+            cout << "La ecuacion es lineal. Solucion: x = " << -c / b << endl;
+        } else {
+            if (c == 0) cout << "Solucion infinita (0 = 0)." << endl;
+            else cout << "Ecuacion absurda o sin solucion." << endl;
+        }
+    } 
+    else {
+        // Cálculo del discriminante
+        discriminante = (b * b) - (4 * a * c);
+        
+        cout << fixed << setprecision(2); // Formato de 2 decimales
+
+        // CASO 1: Raíces Reales y Distintas
+        if (discriminante > 0) {
+            x1 = (-b + sqrt(discriminante)) / (2 * a);
+            x2 = (-b - sqrt(discriminante)) / (2 * a);
+            cout << "Dos raices reales distintas:" << endl;
+            cout << "x1 = " << x1 << endl;
+            cout << "x2 = " << x2 << endl;
+        }
+        // CASO 2: Raíz Real Única (Doble)
+        else if (discriminante == 0) {
+            x1 = -b / (2 * a);
+            cout << "Una sola raiz real (doble):" << endl;
+            cout << "x1 = x2 = " << x1 << endl;
+        }
+        // CASO 3: Raíces Complejas/Imaginarias
+        else {
+            // Calculamos la parte real e imaginaria por separado
+            parteReal = -b / (2 * a);
+            // Usamos el discriminante positivo para la raíz (-discriminante)
+            parteImaginaria = sqrt(-discriminante) / (2 * a);
+            
+            cout << "Raices complejas (imaginarias):" << endl;
+            cout << "x1 = " << parteReal << " + " << parteImaginaria << "i" << endl;
+            cout << "x2 = " << parteReal << " - " << parteImaginaria << "i" << endl;
+        }
+    }
+
+    return 0;
+}

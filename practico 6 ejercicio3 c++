@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int N;
+    int u, d, c, m;
+
+    cout << "Ingrese un numero entero positivo menor a 10000: ";
+    cin >> N;
+
+    // Validación simple
+    if (N < 0 || N >= 10000) {
+        cout << "El numero debe estar entre 0 y 9999." << endl;
+        return 0;
+    }
+
+    // Lógica de desglose:
+    m = N / 1000;          // Obtiene las unidades de mil
+    c = (N / 100) % 10;    // Quita las unidades y toma el residuo de la centena
+    d = (N / 10) % 10;     // Quita las unidades y toma el residuo de la decena
+    u = N % 10;            // El residuo de dividir entre 10 es siempre la unidad
+
+    // Mostrar resultados
+    cout << "\nDesglose del numero " << N << ":" << endl;
+    cout << "Unidades de mil (m): " << m << endl;
+    cout << "Centenas        (c): " << c << endl;
+    cout << "Decenas         (d): " << d << endl;
+    cout << "Unidades        (u): " << u << endl;
+
+    return 0;
+}

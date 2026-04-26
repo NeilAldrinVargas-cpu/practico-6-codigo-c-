@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int h1, m1, s1; // Hora de inicio
+    int h2, m2, s2; // Hora de fin
+    int total_seg1, total_seg2, diferencia;
+    int h_res, m_res, s_res;
+
+    // Entrada del primer horario
+    cout << "Primer horario (h m s): ";
+    cin >> h1 >> m1 >> s1;
+
+    // Entrada del segundo horario
+    cout << "Segundo horario (h m s): ";
+    cin >> h2 >> m2 >> s2;
+
+    // 1. Convertir ambos horarios a segundos totales
+    // (Horas * 3600) + (Minutos * 60) + Segundos
+    total_seg1 = (h1 * 3600) + (m1 * 60) + s1;
+    total_seg2 = (h2 * 3600) + (m2 * 60) + s2;
+
+    // 2. Calcular la diferencia en segundos
+    diferencia = total_seg2 - total_seg1;
+
+    // 3. Convertir la diferencia de nuevo a h:m:s
+    h_res = diferencia / 3600;              // Obtener horas completas
+    m_res = (diferencia % 3600) / 60;       // El resto de horas convertido a minutos
+    s_res = diferencia % 60;                // El sobrante final son los segundos
+
+    // Mostrar resultado
+    cout << "\nTiempo transcurrido: " << h_res << ":" << m_res << ":" << s_res << endl;
+
+    return 0;
+}
